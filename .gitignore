@@ -1,0 +1,6 @@
+*caffemodel
+data/
+*pyc
+build_release/
+_caffe.so
+
