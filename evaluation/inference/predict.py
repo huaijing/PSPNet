@@ -6,8 +6,6 @@ Created on Wed Jan 20 10:46:17 2016
 """
 import os
 import numpy as np
-import sys
-import reader
 from model import Model
 from PIL import Image
 import cPickle
@@ -37,6 +35,10 @@ def evaluate(root_path, result_path):
         print(tt)
         print(tt.shape)
         print(np.sum(tt))
+
+        tt[tt < 3] = 0
+        tt[tt > 3] = 0
+
         im_to_save = Image.fromarray(tt.astype(np.uint8))
         im_to_save.putpalette(cmap.ravel())
         print(resultname)
@@ -44,6 +46,6 @@ def evaluate(root_path, result_path):
 
 
 if __name__ == '__main__':
-    path = "images/cam/"
-    rpath = "images/cam_result/"
+    path = "../data/images/cam/fill/"
+    rpath = "../data/images/cam_result/"
     evaluate(path, rpath)
